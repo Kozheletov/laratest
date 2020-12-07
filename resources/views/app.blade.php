@@ -9,15 +9,16 @@
 </head>
 <body>
 <div class="container mx-auto">
-    <nav>
-        <ul class="flex justify-between w-1/2 mx-auto">
+    <nav class="bg-blue-300">
+        <ul class="flex flex-col items-center justify-between md:flex-row lg:w-1/2 mx-auto p-3">
             <li><a href="">Dashboard</a></li>
             <li><a href="">Log in</a></li>
+            <li><a href="{{route('create')}}">Register</a></li>
             <li><a href="">Name</a></li>
             <li><a href="">Log out</a></li>
         </ul>
     </nav>
-    <h1 class="text-center mt-4 bg-blue-200">Hello</h1>
+    @yield('content')
 </div>
 </body>
 </html>
