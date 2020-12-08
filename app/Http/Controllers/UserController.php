@@ -31,7 +31,7 @@ class UserController extends Controller
         $credentials = $request->only('name', 'password');
 
         if ( ! auth()->attempt($credentials)) {
-            redirect()->route('login');
+            redirect()->route('users.login');
         }
 
         return redirect()->route('dashboard');
@@ -47,5 +47,21 @@ class UserController extends Controller
         auth()->logout();
 
         return redirect()->route('users.login');
+    }
+
+    public function authUser(Request $request)
+    {
+        $validateData = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required|min:5',
+        ]);
+        if ( ! auth()->attempt($validateData)) {
+            return back()->withErrors([
+                'password' => 'unsigned email or password',
+                'email'    => 'unsigned email or password',
+            ]);
+        }
+
+        return redirect()->route('dashboard');
     }
 }
