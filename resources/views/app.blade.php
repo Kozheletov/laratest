@@ -11,11 +11,16 @@
 <div class="container mx-auto">
     <nav class="bg-blue-300">
         <ul class="flex flex-col items-center justify-between md:flex-row lg:w-1/2 mx-auto p-3">
-            <li><a href="">Dashboard</a></li>
-            <li><a href="">Log in</a></li>
-            <li><a href="{{route('create')}}">Register</a></li>
+            <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+            <li><a href="{{route('users.login')}}">Login</a></li>
+            <li><a href="{{route('users.create')}}">Register</a></li>
             <li><a href="">Name</a></li>
-            <li><a href="">Log out</a></li>
+            <li>
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
         </ul>
     </nav>
     @yield('content')
